@@ -12,9 +12,14 @@ export default function Header() {
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
+<<<<<<< HEAD
       className="sticky top-0 z-30 flex items-center justify-between px-6 py-3.5 border-b border-white/[0.08] glass-strong backdrop-blur-xl"
     >
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent-blue/40 to-transparent" />
+=======
+      className="relative z-10 flex items-center justify-between px-6 py-3.5 border-b border-white/[0.06] glass-strong"
+    >
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
       <div className="flex items-center gap-3">
         {/* Logo */}
         <div className="relative w-9 h-9 flex items-center justify-center rounded-xl bg-gradient-to-br from-accent-blue/20 to-accent-teal/10">
@@ -45,8 +50,13 @@ export default function Header() {
       </div>
 
       {/* Right side */}
+<<<<<<< HEAD
       <div className="hidden sm:flex items-center gap-3 text-xs text-text-muted relative z-10">
         <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-accent-teal/[0.08] border border-accent-teal/15">
+=======
+      <div className="hidden sm:flex items-center gap-3 text-xs text-text-muted">
+        <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-accent-teal/[0.06] border border-accent-teal/10">
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
           <span className="w-1.5 h-1.5 rounded-full bg-accent-teal animate-pulse-dot" />
           <span className="text-accent-teal/80 font-medium">Gemini 2.5 Flash</span>
         </span>

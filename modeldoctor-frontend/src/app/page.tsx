@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import { useState, useCallback, useEffect, type ReactNode, type MouseEvent } from "react";
@@ -15,6 +16,18 @@ import dynamic from "next/dynamic";
 import Header from "@/components/Layout/Header";
 import MLSignalsShowcase from "@/components/Layout/MLSignalsShowcase";
 const NeuralBackground = dynamic(() => import("@/components/Layout/NeuralBackground"), { ssr: false });
+=======
+/* ────────────────────────────────────────
+   Main Page — ModelDoctor Application
+   ──────────────────────────────────────── */
+
+"use client";
+
+import { useState, useCallback, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import Header from "@/components/Layout/Header";
+import NeuralBackground from "@/components/Layout/NeuralBackground";
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
 import CodeEditor from "@/components/Editor/CodeEditor";
 import SampleCodeLoader from "@/components/Editor/SampleCodeLoader";
 import DiagnoseButton from "@/components/UI/DiagnoseButton";
@@ -28,6 +41,7 @@ import { SAMPLE_CODES } from "@/lib/sample-codes";
 
 const DEFAULT_CODE = SAMPLE_CODES[0].code;
 
+<<<<<<< HEAD
 const HERO_STATS = [
   { label: "Silent failure patterns", value: "120+" },
   { label: "Average scan speed", value: "2.8s" },
@@ -119,6 +133,12 @@ export default function HomePage() {
   const spotlightX = useSpring(mouseX, { stiffness: 220, damping: 40, mass: 0.2 });
   const spotlightY = useSpring(mouseY, { stiffness: 220, damping: 40, mass: 0.2 });
   const spotlight = useMotionTemplate`radial-gradient(520px circle at ${spotlightX}px ${spotlightY}px, rgba(66, 133, 244, 0.16), transparent 65%)`;
+=======
+export default function HomePage() {
+  const [code, setCode] = useState(DEFAULT_CODE);
+  const { state, result, error, runDiagnosis, reset } = useDiagnosis();
+  const { flags: liveFlags, scanning: liveScanActive } = useLiveScan(code, state !== "scanning");
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
 
   const handleDiagnose = useCallback(() => {
     runDiagnosis(code);
@@ -132,20 +152,31 @@ export default function HomePage() {
     [reset]
   );
 
+<<<<<<< HEAD
+=======
+  // Keyboard shortcut: Ctrl/Cmd + Enter
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
         e.preventDefault();
+<<<<<<< HEAD
         if (state !== "scanning") {
           handleDiagnose();
         }
       }
     };
 
+=======
+        if (state !== "scanning") handleDiagnose();
+      }
+    };
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [handleDiagnose, state]);
 
+<<<<<<< HEAD
   const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
     if (shouldReduceMotion) return;
     mouseX.set(event.clientX);
@@ -170,10 +201,16 @@ export default function HomePage() {
       <div className="floating-orb floating-orb-blue" />
       <div className="floating-orb floating-orb-red" />
       {!shouldReduceMotion && <motion.div className="pointer-spotlight" style={{ background: spotlight }} />}
+=======
+  return (
+    <div className="min-h-screen bg-void relative">
+      <NeuralBackground />
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
 
       <div className="relative z-10 flex flex-col min-h-screen">
         <Header />
 
+<<<<<<< HEAD
         <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8 sm:space-y-10">
           <motion.section
             initial="hidden"
@@ -239,12 +276,50 @@ export default function HomePage() {
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider">Your ML Code</h3>
+=======
+        <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+          {/* ── Hero tagline ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+              <span className="gradient-text-red">&quot;94% Accuracy.</span>{" "}
+              <span className="text-text-muted/80">0% Trustworthy.&quot;</span>
+            </h2>
+            <p className="text-sm text-text-muted/60 max-w-lg mx-auto leading-relaxed">
+              Paste your ML Python code below. ModelDoctor scans for silent
+              failures — data leakage, overfitting traps, and bugs that
+              never crash but silently corrupt your model.
+            </p>
+          </motion.div>
+
+          {/* ── Two-column layout ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* LEFT: Code Input */}
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="space-y-4"
+            >
+              <div className="flex items-center justify-between">
+                <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider">
+                  Your ML Code
+                </h3>
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
                 <SampleCodeLoader onLoad={handleLoadSample} disabled={state === "scanning"} />
               </div>
 
               <CodeEditor code={code} onChange={setCode} disabled={state === "scanning"} liveFlags={liveFlags} />
 
+<<<<<<< HEAD
               <div className="flex flex-wrap items-center justify-between gap-3">
+=======
+              <div className="flex items-center justify-between">
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
                 <div className="flex items-center gap-3">
                   <p className="text-[10px] text-text-muted/50 font-mono">
                     {code.split("\n").length} lines &middot; Python
@@ -253,6 +328,7 @@ export default function HomePage() {
                 </div>
                 <DiagnoseButton onClick={handleDiagnose} loading={state === "scanning"} disabled={!code.trim()} />
               </div>
+<<<<<<< HEAD
             </TiltPanel>
 
             <TiltPanel
@@ -273,6 +349,32 @@ export default function HomePage() {
                     exit={{ opacity: 0, y: 10 }}
                     className="glass rounded-2xl p-10 text-center"
                   >
+=======
+
+            </motion.div>
+
+            {/* RIGHT: Results */}
+            <motion.div
+              initial={{ opacity: 0, x: 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+            >
+              <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider mb-4">
+                Diagnosis Report
+              </h3>
+
+              <AnimatePresence mode="wait">
+                {/* Idle */}
+                {state === "idle" && (
+                  <motion.div
+                    key="idle"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="glass-strong rounded-2xl p-10 text-center"
+                  >
+                    {/* ECG line idle graphic */}
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
                     <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-accent-blue/10 to-accent-teal/10 flex items-center justify-center">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#idleGrad)" strokeWidth="1.5">
                         <defs>
@@ -284,9 +386,19 @@ export default function HomePage() {
                         <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                       </svg>
                     </div>
+<<<<<<< HEAD
                     <h3 className="text-base font-bold text-text-primary/80 mb-1.5">Ready to Diagnose</h3>
                     <p className="text-xs text-text-muted/50 max-w-xs mx-auto leading-relaxed">
                       Click <span className="text-accent-blue font-semibold">Run Diagnosis</span> or press{" "}
+=======
+                    <h3 className="text-base font-bold text-text-primary/80 mb-1.5">
+                      Ready to Diagnose
+                    </h3>
+                    <p className="text-xs text-text-muted/50 max-w-xs mx-auto leading-relaxed">
+                      Click{" "}
+                      <span className="text-accent-blue font-semibold">Run Diagnosis</span>{" "}
+                      or press{" "}
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
                       <kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] text-text-muted/60 text-[10px] font-mono">
                         Ctrl+Enter
                       </kbd>{" "}
@@ -295,24 +407,43 @@ export default function HomePage() {
                   </motion.div>
                 )}
 
+<<<<<<< HEAD
                 {state === "scanning" && (
                   <motion.div key="scanning" exit={{ opacity: 0, y: 8 }}>
+=======
+                {/* Loading */}
+                {state === "scanning" && (
+                  <motion.div key="scanning" exit={{ opacity: 0 }}>
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
                     <LoadingState />
                   </motion.div>
                 )}
 
+<<<<<<< HEAD
                 {state === "error" && error && (
                   <motion.div key="error" exit={{ opacity: 0, y: 8 }}>
+=======
+                {/* Error */}
+                {state === "error" && error && (
+                  <motion.div key="error" exit={{ opacity: 0 }}>
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
                     <ErrorState message={error} onRetry={handleDiagnose} />
                   </motion.div>
                 )}
 
+<<<<<<< HEAD
                 {state === "success" && result && (
                   <motion.div key="success" exit={{ opacity: 0, y: 8 }} className="space-y-4">
+=======
+                {/* Success */}
+                {state === "success" && result && (
+                  <motion.div key="success" exit={{ opacity: 0 }} className="space-y-4">
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
                     <DiagnosisReport report={result} />
                   </motion.div>
                 )}
               </AnimatePresence>
+<<<<<<< HEAD
             </TiltPanel>
           </section>
 
@@ -346,6 +477,21 @@ export default function HomePage() {
           >
             <p className="text-[10px] text-text-muted/35 font-mono tracking-wide">
               ModelDoctor &middot; Team ASTROID &middot; Trustworthy ML from the start
+=======
+            </motion.div>
+          </div>
+
+          {/* ── Footer ── */}
+          <motion.footer
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="mt-14 pt-6 border-t border-white/[0.04] text-center pb-6"
+          >
+            <p className="text-[10px] text-text-muted/30 font-mono tracking-wide">
+              ModelDoctor &middot; Team ASTROID — Prabhas N &amp; Poornima Bhat &middot;
+              Open Innovation Track &middot; &quot;Trustworthy ML, from the start.&quot;
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
             </p>
           </motion.footer>
         </main>

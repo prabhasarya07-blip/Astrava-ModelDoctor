@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+<<<<<<< HEAD
     "dev": "concurrently -n BACKEND,FRONTEND -c cyan,magenta \"npm run dev:backend\" \"npm run dev:next\"",
     "dev:next": "next dev",
     "dev:backend": "cd ../modeldoctor-backend && (..\\.venv\\Scripts\\python.exe -m uvicorn main:app --reload --port 8000 || python -m uvicorn main:app --reload --port 8000)",
+=======
+    "dev": "next dev",
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@monaco-editor/react": "^4.6.0",
     "@react-three/drei": "^9.92.7",
     "@react-three/fiber": "^8.15.12",
@@ -21,6 +26,14 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "three": "^0.160.0"
+=======
+    "next": "^14.2.21",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@monaco-editor/react": "^4.6.0",
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^0.468.0"
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
@@ -29,10 +42,16 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.21",
+<<<<<<< HEAD
     "monaco-editor": "^0.55.1",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2",
     "concurrently": "^9.2.1"
+=======
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
   }
 }

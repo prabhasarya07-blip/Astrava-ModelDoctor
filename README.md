@@ -42,6 +42,12 @@ cd modeldoctor-backend
 
 # Install dependencies
 pip install -r requirements.txt
+<<<<<<< HEAD
+=======
+
+# Start the server
+uvicorn main:app --reload --port 8000
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
 ```
 
 ### 2. Frontend (Next.js)
@@ -52,6 +58,7 @@ cd modeldoctor-frontend
 # Install dependencies
 npm install
 
+<<<<<<< HEAD
 # Start frontend + backend together (recommended)
 npm run dev
 ```
@@ -60,6 +67,12 @@ This single command starts:
 - Next.js frontend on `http://localhost:3000`
 - FastAPI backend on `http://localhost:8000`
 
+=======
+# Start development server
+npm run dev
+```
+
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
 ### 3. Open the app
 Visit **http://localhost:3000** — the demo code is pre-loaded!
 

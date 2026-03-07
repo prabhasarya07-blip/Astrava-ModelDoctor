@@ -238,6 +238,7 @@ body {
   margin-top: 6px;
   margin-left: 4px;
 }
+<<<<<<< HEAD
 
 /* Dynamic cinematic overlays */
 @keyframes aurora-shift {
@@ -578,3 +579,5 @@ body {
     display: none;
   }
 }
+=======
+>>>>>>> 92bbd2839911902c33e5b11b2e0374dad1098a5b
