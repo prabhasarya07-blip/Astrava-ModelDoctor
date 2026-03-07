@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"app\\\\page.tsx -> @/components/Layout/NeuralBackground\":{\"id\":\"app\\\\page.tsx -> @/components/Layout/NeuralBackground\",\"files\":[\"static/chunks/_app-pages-browser_src_components_Layout_NeuralBackground_tsx.js\"]}}"
